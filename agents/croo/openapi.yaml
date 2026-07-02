@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: ProofCup CROO Agent API
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Health check
+      operationId: health
+      responses:
+        "200":
+          description: Agent is reachable
+  /sample:
+    get:
+      summary: Return a sample proof, audit request, and payout intent
+      operationId: sample
+      responses:
+        "200":
+          description: Demo payload
+  /audit:
+    post:
+      summary: Audit a MatchPass proof receipt
+      operationId: auditMatchPass
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Audit result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accepted:
+                    type: boolean
+                  chargeable:
+                    type: boolean
+                  score:
+                    type: number
+                  findings:
+                    type: array
+                    items:
+                      type: string
+  /payout-intent:
+    post:
+      summary: Prepare a WDK-style USDt payout intent from a verified receipt
+      operationId: payoutIntent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Payout intent

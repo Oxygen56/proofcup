@@ -1,0 +1,31 @@
+{
+  "name": "ProofCup MatchPass Auditor",
+  "version": "0.1.0",
+  "capVersion": "0.1",
+  "summary": "Paid callable agent that audits private football eligibility proof receipts and stablecoin payout readiness.",
+  "pricing": {
+    "amount": "0.50",
+    "currency": "USDC",
+    "unit": "audit"
+  },
+  "services": [
+    {
+      "id": "proofcup.matchpass.audit",
+      "input": "MatchPassProof",
+      "output": "CrooCapResponse",
+      "description": "Verifies proof arithmetic, duplicate-claim risk, payout privacy, and next-agent handoff readiness."
+    },
+    {
+      "id": "proofcup.payout.prepare",
+      "input": "PublicReceipt",
+      "output": "WdkPayoutIntent",
+      "description": "Prepares a stablecoin payout intent for a verified football tournament receipt."
+    }
+  ],
+  "storeListing": {
+    "category": "Data & Verification",
+    "tracks": ["research-intelligence", "data-verification", "defi"],
+    "license": "MIT",
+    "demoCommand": "pnpm proof:demo"
+  }
+}

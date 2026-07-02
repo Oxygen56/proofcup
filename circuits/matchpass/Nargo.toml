@@ -1,0 +1,6 @@
+[package]
+name = "matchpass"
+type = "bin"
+authors = ["ProofCup"]
+
+[dependencies]

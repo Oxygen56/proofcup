@@ -1,0 +1,41 @@
+{
+  "name": "proofcup",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "proof:demo": "tsx src/cli/proof-demo.ts",
+    "proof:prove": "cd .. && mkdir -p proofcup/zk-artifacts/matchpass && .competition/tools/bb/bin/bb prove -b proofcup/circuits/target/matchpass.json -w proofcup/circuits/target/matchpass.gz -o proofcup/zk-artifacts/matchpass -t evm --write_vk --verify --output_format json",
+    "proof:verify": "cd .. && .competition/tools/bb/bin/bb verify -k proofcup/zk-artifacts/matchpass/vk.json -p proofcup/zk-artifacts/matchpass/proof.json -i proofcup/zk-artifacts/matchpass/public_inputs.json -t evm",
+    "agent:serve": "tsx src/cli/agent-serve.ts",
+    "agent:smoke": "tsx src/cli/agent-smoke.ts",
+    "stellar:anchor": "tsx src/cli/stellar-anchor.ts",
+    "tether:demo": "tsx src/cli/tether-demo.ts",
+    "nargo:check": "cd circuits && ../../.competition/tools/nargo/bin/nargo check --package matchpass",
+    "nargo:compile": "cd circuits && ../../.competition/tools/nargo/bin/nargo compile --package matchpass",
+    "nargo:execute": "cd circuits && ../../.competition/tools/nargo/bin/nargo execute --package matchpass"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@stellar/stellar-sdk": "^16.0.1",
+    "@tetherto/wdk": "^1.0.0-beta.12",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "undici": "^8.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  }
+}

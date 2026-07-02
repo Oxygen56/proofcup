@@ -1,0 +1,6 @@
+secret = "42"
+roster_salt = "1337"
+team_id = "7"
+tournament_id = "20260703"
+commitment = "12514838"
+nullifier = "628113118"

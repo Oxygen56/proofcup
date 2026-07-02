@@ -1,0 +1,17 @@
+{
+  "network": "stellar-testnet",
+  "account": "GCARXKETTRKEVPBVBK2SXAMMD4B2EC2AFREMMX7ZIQH4KUUAOOFAOXRS",
+  "transactionHash": "2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681",
+  "ledger": 3398245,
+  "receiptHash": "f00988fe981d9a1f3c1fb6834e70cee75493b9e543c54b7a98d078ceb9f30a22",
+  "explorer": "https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681",
+  "receipt": {
+    "protocol": "ProofCup MatchPass",
+    "teamId": 7,
+    "tournamentId": 20260703,
+    "commitment": "12514838",
+    "nullifier": "628113118",
+    "payoutAddressHash": "374ba7db577f24c38bbde469f894605b00ad5b1e",
+    "issuedAt": "2026-07-02T14:30:00.000Z"
+  }
+}
