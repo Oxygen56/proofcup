@@ -8,7 +8,7 @@
 
 ## Demo URL Status
 
-GitHub Pages serves `https://oxygen56.github.io/proofcup/`; direct HTTP checks for the page and bundled assets returned `200`. GitHub's Pages API still reports the last dynamic build as `errored`, so the release video remains the most reliable judging fallback.
+GitHub Pages serves `https://oxygen56.github.io/proofcup/`; direct HTTP checks for the page and stable bundled assets returned `200`. GitHub's Pages API still reports new dynamic builds as `errored`, so the release video and package are the most reliable sources for the latest Soroban contract evidence.
 
 Local fallback:
 
