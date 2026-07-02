@@ -18,6 +18,8 @@ pnpm nargo:compile
 pnpm nargo:execute
 pnpm proof:prove
 pnpm proof:verify
+pnpm soroban:test
+pnpm soroban:build
 pnpm agent:smoke
 pnpm tether:demo
 pnpm dev
@@ -25,6 +27,7 @@ pnpm dev
 
 ## Verified Evidence
 
+- Live demo: https://oxygen56.github.io/proofcup/
 - Noir circuit compiles and solves witness: `proofcup/circuits/matchpass/src/main.nr`.
 - Barretenberg proof verifies natively:
   - proof: `zk-artifacts/matchpass/proof.json`
@@ -33,6 +36,14 @@ pnpm dev
 - Stellar testnet receipt anchor:
   - transaction: `2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681`
   - explorer: https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681
+- Stellar Soroban verifier:
+  - contract: `CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK`
+  - lab: https://lab.stellar.org/r/testnet/contract/CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK
+  - upload tx: https://stellar.expert/explorer/testnet/tx/4ea12b85852773534e3545369721817f170b9f5bbee92a788e582ba340a11776
+  - deploy tx: https://stellar.expert/explorer/testnet/tx/76bb73b269c1364ec913cca999eaedecaeb8937ab2b0bb432c24bc22bd803758
+  - verify tx: https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6
+  - wasm: `target/stellar/matchpass_verifier.wasm`
+  - wasm hash: `00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603`
 - CROO-style HTTP agent:
   - `pnpm agent:serve`
   - `GET /health`, `GET /sample`, `POST /audit`, `POST /payout-intent`

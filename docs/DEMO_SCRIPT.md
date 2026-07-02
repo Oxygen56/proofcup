@@ -25,7 +25,13 @@ Open:
 
 `https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681`
 
-"The receipt hash is anchored on Stellar testnet. In production, the Soroban verifier rejects duplicate nullifiers before any payout is released."
+Then open:
+
+`https://lab.stellar.org/r/testnet/contract/CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK`
+
+`https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6`
+
+"The receipt hash is anchored on Stellar testnet, and the deployed Soroban contract stores the public nullifier. The first `verify_matchpass` invocation returned true; a duplicate nullifier simulation returns false before any payout is released."
 
 ## 1:20-1:50 CROO Agent
 

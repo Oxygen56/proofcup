@@ -7,6 +7,17 @@ export const stellarEvidence = {
   explorer: "https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681"
 };
 
+export const sorobanEvidence = {
+  contractId: "CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK",
+  contractLab: "https://lab.stellar.org/r/testnet/contract/CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK",
+  wasmHash: "00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603",
+  uploadTx: "4ea12b85852773534e3545369721817f170b9f5bbee92a788e582ba340a11776",
+  deployTx: "76bb73b269c1364ec913cca999eaedecaeb8937ab2b0bb432c24bc22bd803758",
+  verifyTx: "cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6",
+  verifyExplorer: "https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6",
+  duplicateSimulation: "false"
+};
+
 export const zkEvidence = {
   noirVersion: "1.0.0-beta.22",
   barretenbergVersion: "5.0.0-nightly.20260522",

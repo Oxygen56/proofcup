@@ -6,7 +6,7 @@ import { buildStellarAnchor } from "./lib/stellar";
 import { createCrooAuditRequest, runCrooAudit } from "./lib/croo";
 import { createWdkPayoutIntent, explainTetherFit } from "./lib/tether";
 import { demoClaim, payoutManifest } from "./data/demo";
-import { stellarEvidence, zkEvidence } from "./data/evidence";
+import { sorobanEvidence, stellarEvidence, zkEvidence } from "./data/evidence";
 import "./styles.css";
 
 const proof = createMatchPassProof(demoClaim);
@@ -54,6 +54,9 @@ function App() {
           <a className="chain-link" href={stellarEvidence.explorer} target="_blank" rel="noreferrer">
             Stellar testnet tx {stellarEvidence.transactionHash.slice(0, 10)}...
           </a>
+          <a className="chain-link" href={sorobanEvidence.contractLab} target="_blank" rel="noreferrer">
+            Soroban contract {sorobanEvidence.contractId.slice(0, 10)}...
+          </a>
         </div>
       </section>
 
@@ -84,14 +87,19 @@ function App() {
           <strong>ledger {stellarEvidence.ledger}</strong>
           <em>{stellarEvidence.receiptHash.slice(0, 18)}...</em>
         </div>
+        <div>
+          <span>Soroban verifier</span>
+          <strong>deployed</strong>
+          <em>{sorobanEvidence.wasmHash.slice(0, 18)}...</em>
+        </div>
       </section>
 
       <section className="grid" id="tracks">
         <article>
           <Network />
           <h3>Stellar ZK</h3>
-          <p>Posts the public receipt to a Soroban verifier method and uses the nullifier to prevent duplicate claims.</p>
-          <code>{stellar.contractMethod}</code>
+          <p>Posts the public receipt to a deployed Soroban verifier and uses the nullifier to prevent duplicate claims.</p>
+          <code>{stellar.contractMethod} / {sorobanEvidence.contractId}</code>
         </article>
         <article>
           <Bot />
@@ -105,6 +113,30 @@ function App() {
           <p>Football knockout rewards become self-custodial USDt payout intents that can be wired into WDK modules.</p>
           <code>{payout.asset} / {payout.walletMode} / {payout.policyId}</code>
         </article>
+      </section>
+
+      <section className="band">
+        <div className="section-title">
+          <Network />
+          <div>
+            <h2>Stellar Contract Evidence</h2>
+            <p>Testnet verifier deployment and duplicate-nullifier behavior.</p>
+          </div>
+        </div>
+        <div className="table">
+          <a className="row" href={sorobanEvidence.contractLab} target="_blank" rel="noreferrer">
+            <span>Contract</span>
+            <strong>{sorobanEvidence.contractId}</strong>
+            <span>testnet</span>
+            <em>deployed</em>
+          </a>
+          <a className="row" href={sorobanEvidence.verifyExplorer} target="_blank" rel="noreferrer">
+            <span>Verify tx</span>
+            <strong>{sorobanEvidence.verifyTx}</strong>
+            <span>true</span>
+            <em>duplicate simulation {sorobanEvidence.duplicateSimulation}</em>
+          </a>
+        </div>
       </section>
 
       <section className="band">

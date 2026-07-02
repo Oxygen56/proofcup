@@ -20,14 +20,12 @@ ProofCup lets tournament organizers verify player eligibility and prepare stable
 
 - Working TypeScript proof workflow.
 - Compilable Noir circuit source.
-- Soroban verifier interface.
+- Deployed Soroban verifier contract on Stellar testnet.
 - CROO CAP manifest and OpenAPI shape.
 - Tether WDK payout intent model.
 
 ## Production Next Steps
 
-- Generate proof bytes with Barretenberg.
 - Convert proof verifier to Stellar BN254 host functions.
-- Deploy the Soroban contract to Stellar testnet.
 - Register the CROO agent on Agent Store.
 - Select WDK target chain and bind payout signing.

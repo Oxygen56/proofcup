@@ -1,0 +1,36 @@
+{
+  "network": "stellar-testnet",
+  "rpc": "https://soroban-rpc.testnet.stellar.gateway.fm",
+  "deployer": "GA554SQT2FUY5EINL2XO4LJ4TUPCG3ENIKQ6CAFMAIJFXDRN4ZAT2EVX",
+  "contractId": "CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK",
+  "contractLab": "https://lab.stellar.org/r/testnet/contract/CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK",
+  "wasm": {
+    "path": "target/stellar/matchpass_verifier.wasm",
+    "hash": "00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603",
+    "sizeBytes": 1378,
+    "exportedFunctions": [
+      "seen_nullifier",
+      "verify_matchpass"
+    ]
+  },
+  "transactions": {
+    "friendbot": "1a98e0c76bc50ebd859312a7c4fe4a9f17267a667185d073e3f6fc3b2293631a",
+    "uploadWasm": "4ea12b85852773534e3545369721817f170b9f5bbee92a788e582ba340a11776",
+    "deployContract": "76bb73b269c1364ec913cca999eaedecaeb8937ab2b0bb432c24bc22bd803758",
+    "verifyMatchpass": "cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6"
+  },
+  "explorer": {
+    "uploadWasm": "https://stellar.expert/explorer/testnet/tx/4ea12b85852773534e3545369721817f170b9f5bbee92a788e582ba340a11776",
+    "deployContract": "https://stellar.expert/explorer/testnet/tx/76bb73b269c1364ec913cca999eaedecaeb8937ab2b0bb432c24bc22bd803758",
+    "verifyMatchpass": "https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6"
+  },
+  "verifiedReceipt": {
+    "teamId": 7,
+    "tournamentId": 20260703,
+    "commitment": "12514838",
+    "nullifier": "628113118",
+    "firstInvokeReturned": true,
+    "seenNullifierAfterInvoke": true,
+    "duplicateInvokeSimulationReturned": false
+  }
+}

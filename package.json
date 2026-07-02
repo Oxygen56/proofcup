@@ -14,6 +14,8 @@
     "agent:serve": "tsx src/cli/agent-serve.ts",
     "agent:smoke": "tsx src/cli/agent-smoke.ts",
     "stellar:anchor": "tsx src/cli/stellar-anchor.ts",
+    "soroban:test": "cd contracts/soroban && PATH=/opt/homebrew/opt/rustup/bin:$PATH cargo test",
+    "soroban:build": "cd contracts/soroban && PATH=/opt/homebrew/opt/rustup/bin:$PATH stellar contract build --out-dir ../../target/stellar",
     "tether:demo": "tsx src/cli/tether-demo.ts",
     "nargo:check": "cd circuits && ../../.competition/tools/nargo/bin/nargo check --package matchpass",
     "nargo:compile": "cd circuits && ../../.competition/tools/nargo/bin/nargo compile --package matchpass",

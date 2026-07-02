@@ -3,9 +3,12 @@
 ## Common Links
 
 - GitHub: `https://github.com/Oxygen56/proofcup`
-- Release package: `https://github.com/Oxygen56/proofcup/releases/tag/v0.1.4`
-- Demo video: `https://github.com/Oxygen56/proofcup/releases/download/v0.1.4/proofcup-demo.mov`
+- Live demo: `https://oxygen56.github.io/proofcup/`
+- Release package: `https://github.com/Oxygen56/proofcup/releases/tag/v0.1.5`
+- Demo video: `https://github.com/Oxygen56/proofcup/releases/download/v0.1.5/proofcup-demo.mov`
 - Stellar tx: `https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681`
+- Soroban contract: `CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK`
+- Soroban verify tx: `https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6`
 - Screenshot: `docs/screenshots/proofcup-demo-fullpage.png`
 
 ## DoraHacks Submit Pages
@@ -18,7 +21,7 @@
 
 - Project name: `ProofCup MatchPass`
 - Tagline: `Private football eligibility proofs with Stellar-ready nullifiers for duplicate-claim prevention.`
-- Description: `ProofCup MatchPass lets tournament players prove private roster eligibility without exposing identity, then anchors the receipt hash on Stellar testnet. It includes a Noir circuit, Barretenberg UltraHonk proof artifacts, verification key, public inputs, a Soroban verifier interface, and a reproducible local demo.`
+- Description: `ProofCup MatchPass lets tournament players prove private roster eligibility without exposing identity, anchors the receipt hash on Stellar testnet, and verifies the public receipt through a deployed Soroban nullifier contract. It includes a Noir circuit, Barretenberg UltraHonk proof artifacts, verification key, public inputs, WASM hash, contract id, and reproducible demo.`
 
 ## CROO Agent Hackathon
 
