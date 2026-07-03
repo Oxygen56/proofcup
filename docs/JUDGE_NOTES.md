@@ -19,5 +19,6 @@
 
 - The Soroban contract currently verifies receipt shape and nullifier uniqueness; full BN254 proof verification can be wired to Stellar host functions as the protocol surface stabilizes.
 - CROO Agent Store external listing requires account login.
-- DoraHacks final submission requires account login and CAPTCHA handling.
-- The release video and GitHub Pages demo URL are already available for submission.
+- Stellar Hacks: Real-World ZK has been submitted on DoraHacks and is under review.
+- CROO and Tether DoraHacks submissions still require their separate final form flows.
+- The release video and GitHub Pages demo URL are public.
