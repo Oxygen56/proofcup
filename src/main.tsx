@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ShieldCheck, WalletCards, Bot, Trophy, FileCheck2, Network } from "lucide-react";
-import { createMatchPassProof, publicReceiptForSubmission, verifyMatchPassProof } from "./lib/proofcup";
+import { buildReceiptGateArgs, createMatchPassProof, publicReceiptForSubmission, verifyMatchPassProof } from "./lib/proofcup";
 import { buildStellarAnchor } from "./lib/stellar";
 import { createCrooAuditRequest, runCrooAudit } from "./lib/croo";
 import { createWdkPayoutIntent, explainTetherFit } from "./lib/tether";
@@ -11,7 +11,8 @@ import "./styles.css";
 
 const proof = createMatchPassProof(demoClaim);
 const receipt = publicReceiptForSubmission(proof);
-const stellar = buildStellarAnchor(receipt);
+const stellar = buildStellarAnchor(proof);
+const receiptGate = buildReceiptGateArgs(proof);
 const audit = runCrooAudit(createCrooAuditRequest(proof));
 const payout = createWdkPayoutIntent(receipt, 1000);
 
@@ -89,8 +90,13 @@ function App() {
         </div>
         <div>
           <span>Soroban verifier</span>
-          <strong>deployed</strong>
-          <em>{sorobanEvidence.wasmHash.slice(0, 18)}...</em>
+          <strong>receipt gate</strong>
+          <em>{sorobanEvidence.receiptGateWasmHash.slice(0, 18)}...</em>
+        </div>
+        <div>
+          <span>Receipt hash</span>
+          <strong>bound</strong>
+          <em>{receiptGate.receiptHash.slice(0, 18)}...</em>
         </div>
       </section>
 
@@ -98,7 +104,7 @@ function App() {
         <article>
           <Network />
           <h3>Stellar ZK</h3>
-          <p>Posts the public receipt to a deployed Soroban verifier and uses the nullifier to prevent duplicate claims.</p>
+          <p>Posts the public proof receipt to a Soroban proof gate that binds artifact hashes, public inputs, receipt hash, and nullifier replay protection.</p>
           <code>{stellar.contractMethod} / {sorobanEvidence.contractId}</code>
         </article>
         <article>
@@ -120,7 +126,7 @@ function App() {
           <Network />
           <div>
             <h2>Stellar Contract Evidence</h2>
-            <p>Testnet verifier deployment and duplicate-nullifier behavior.</p>
+            <p>Testnet verifier deployment plus the upgraded receipt-aware proof gate built locally.</p>
           </div>
         </div>
         <div className="table">
@@ -136,6 +142,12 @@ function App() {
             <span>true</span>
             <em>duplicate simulation {sorobanEvidence.duplicateSimulation}</em>
           </a>
+          <div className="row">
+            <span>Receipt gate</span>
+            <strong>{receiptGate.receiptHash}</strong>
+            <span>{sorobanEvidence.receiptGateExports} exports</span>
+            <em>local WASM {sorobanEvidence.receiptGateWasmHash.slice(0, 18)}...</em>
+          </div>
         </div>
       </section>
 

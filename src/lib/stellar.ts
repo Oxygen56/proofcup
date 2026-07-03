@@ -1,5 +1,5 @@
 import { Keypair, Memo, Networks, TransactionBuilder } from "@stellar/stellar-sdk";
-import type { PublicReceipt } from "./proofcup";
+import { buildReceiptGateArgs, type MatchPassProof, type PublicReceipt, type ReceiptGateArgs } from "./proofcup";
 
 function demoSeed(): Buffer {
   const seed = new Uint8Array(32).fill(7);
@@ -10,30 +10,21 @@ export type StellarAnchor = {
   network: "testnet";
   source: string;
   memo: string;
-  operation: "invoke_matchpass_verifier";
-  contractMethod: "verify_matchpass";
-  contractArgs: {
-    teamId: number;
-    tournamentId: number;
-    commitment: string;
-    nullifier: string;
-  };
+  operation: "invoke_matchpass_receipt_gate";
+  contractMethod: "verify_matchpass_receipt";
+  contractArgs: ReceiptGateArgs;
 };
 
-export function buildStellarAnchor(receipt: PublicReceipt): StellarAnchor {
+export function buildStellarAnchor(proof: MatchPassProof): StellarAnchor {
   const source = Keypair.fromRawEd25519Seed(demoSeed()).publicKey();
+  const receipt = proof.receipt;
   return {
     network: "testnet",
     source,
     memo: `proofcup:${receipt.nullifier.slice(0, 16)}`,
-    operation: "invoke_matchpass_verifier",
-    contractMethod: "verify_matchpass",
-    contractArgs: {
-      teamId: receipt.teamId,
-      tournamentId: receipt.tournamentId,
-      commitment: receipt.commitment,
-      nullifier: receipt.nullifier
-    }
+    operation: "invoke_matchpass_receipt_gate",
+    contractMethod: "verify_matchpass_receipt",
+    contractArgs: buildReceiptGateArgs(proof)
   };
 }
 

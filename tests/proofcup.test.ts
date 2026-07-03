@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createMatchPassProof, verifyMatchPassProof } from "../src/lib/proofcup";
+import { buildReceiptGateArgs, createMatchPassProof, receiptGateHash, verifyMatchPassProof } from "../src/lib/proofcup";
 import { demoClaim } from "../src/data/demo";
 import { buildStellarAnchor, makeDemoTransactionEnvelope } from "../src/lib/stellar";
 import { createCrooAuditRequest, runCrooAudit } from "../src/lib/croo";
@@ -21,14 +21,25 @@ describe("ProofCup", () => {
 
   it("builds Stellar, CROO, and Tether adapters from one receipt", () => {
     const proof = createMatchPassProof(demoClaim);
-    const stellar = buildStellarAnchor(proof.receipt);
+    const stellar = buildStellarAnchor(proof);
     const audit = runCrooAudit(createCrooAuditRequest(proof));
     const payout = createWdkPayoutIntent(proof.receipt, 1000);
 
-    expect(stellar.contractMethod).toBe("verify_matchpass");
+    expect(stellar.contractMethod).toBe("verify_matchpass_receipt");
+    expect(stellar.contractArgs.receiptHash).toBe("9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa");
     expect(makeDemoTransactionEnvelope(proof.receipt).length).toBeGreaterThan(100);
     expect(audit.accepted).toBe(true);
     expect(payout.asset).toBe("USDt");
+  });
+
+  it("binds proof artifacts into a deterministic receipt gate hash", () => {
+    const proof = createMatchPassProof(demoClaim);
+    const gate = buildReceiptGateArgs(proof);
+
+    expect(receiptGateHash(proof.receipt)).toBe("9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa");
+    expect(gate.proofHash).toBe("8f50d86741be997da0777e99ccb94b7a4a1d75c548bc23bfc563b371f869c976");
+    expect(gate.vkHash).toBe("e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1");
+    expect(gate.publicInputsHash).toBe("7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a");
   });
 
   it("serves the CROO audit agent over HTTP", async () => {

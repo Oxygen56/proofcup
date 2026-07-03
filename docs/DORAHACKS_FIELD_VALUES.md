@@ -9,6 +9,8 @@
 - Stellar tx: `https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681`
 - Soroban contract: `CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK`
 - Soroban verify tx: `https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6`
+- Receipt-gate WASM hash: `6287720697927697eddbe9e3d310c1dccfb291f48d052c231c0c5d63f15bf097`
+- Receipt-gate hash: `9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa`
 - Screenshot: `docs/screenshots/proofcup-demo-fullpage.png`
 
 ## DoraHacks Submit Pages
@@ -21,7 +23,7 @@
 
 - Project name: `ProofCup MatchPass`
 - Tagline: `Private football eligibility proofs with Stellar-ready nullifiers for duplicate-claim prevention.`
-- Description: `ProofCup MatchPass lets tournament players prove private roster eligibility without exposing identity, anchors the receipt hash on Stellar testnet, and verifies the public receipt through a deployed Soroban nullifier contract. It includes a Noir circuit, Barretenberg UltraHonk proof artifacts, verification key, public inputs, WASM hash, contract id, and reproducible demo.`
+- Description: `ProofCup MatchPass lets tournament players prove private roster eligibility without exposing identity, anchors the receipt hash on Stellar testnet, and verifies the public receipt through Soroban nullifier and receipt-gate logic. It includes a Noir circuit, Barretenberg UltraHonk proof artifacts, verification key, public inputs, proof/vk/public-input hashes, receipt hash, deployed contract id, upgraded receipt-gate WASM hash, and reproducible demo.`
 
 ## CROO Agent Hackathon
 

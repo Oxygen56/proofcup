@@ -12,7 +12,7 @@ ProofCup lets tournament organizers verify player eligibility and prepare stable
 
 1. A player keeps `secret` and `roster_salt` private.
 2. The Noir circuit computes public `commitment` and tournament-scoped `nullifier`.
-3. The public receipt can be stored or checked by the Soroban verifier.
+3. The public receipt is bound into a Soroban receipt gate with proof, verification-key, public-input, payout-hash, receipt-hash, and nullifier commitments.
 4. CROO agent audits the receipt and produces findings.
 5. Tether WDK-style wallet prepares USDt payouts for verified winners.
 
@@ -21,11 +21,13 @@ ProofCup lets tournament organizers verify player eligibility and prepare stable
 - Working TypeScript proof workflow.
 - Compilable Noir circuit source.
 - Deployed Soroban verifier contract on Stellar testnet.
+- Upgraded Soroban receipt gate with 8 exported functions, deterministic receipt hashing, artifact hash checks, and replay protection.
 - CROO CAP manifest and OpenAPI shape.
 - Tether WDK payout intent model.
 
 ## Production Next Steps
 
-- Convert proof verifier to Stellar BN254 host functions.
+- Redeploy the receipt-aware gate once the public testnet RPC accepts contract uploads again.
+- Expand the receipt gate into a full in-contract UltraHonk verifier or a circuit-specific BN254 verifier as Stellar host-function economics permit.
 - Register the CROO agent on Agent Store.
 - Select WDK target chain and bind payout signing.

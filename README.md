@@ -2,7 +2,7 @@
 
 ProofCup is a privacy-preserving tournament payout and roster verification stack for three open hackathons:
 
-- Stellar Hacks: Real-World ZK: private roster eligibility proofs, public nullifiers, and a Soroban verifier interface.
+- Stellar Hacks: Real-World ZK: private roster eligibility proofs, public nullifiers, and a Soroban receipt-aware proof gate.
 - CROO Agent Hackathon: a paid callable audit agent that checks proof receipts, payout manifests, and tournament risk.
 - Tether Developers Cup: a football-themed WDK wallet and payment flow for self-custodial USDt prize operations.
 
@@ -43,7 +43,10 @@ pnpm dev
   - deploy tx: https://stellar.expert/explorer/testnet/tx/76bb73b269c1364ec913cca999eaedecaeb8937ab2b0bb432c24bc22bd803758
   - verify tx: https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6
   - wasm: `target/stellar/matchpass_verifier.wasm`
-  - wasm hash: `00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603`
+  - deployed wasm hash: `00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603`
+  - upgraded receipt-gate wasm hash: `6287720697927697eddbe9e3d310c1dccfb291f48d052c231c0c5d63f15bf097`
+  - receipt gate hash: `9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa`
+  - receipt gate functions: `verify_matchpass_receipt`, `receipt_hash`, `receipt_verified`, expected artifact hash getters, and duplicate-nullifier checks.
 - CROO-style HTTP agent:
   - `pnpm agent:serve`
   - `GET /health`, `GET /sample`, `POST /audit`, `POST /payout-intent`

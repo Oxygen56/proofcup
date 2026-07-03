@@ -1,5 +1,5 @@
 import { sha256 } from "@noble/hashes/sha256";
-import { bytesToHex, utf8ToBytes } from "@noble/hashes/utils";
+import { bytesToHex, hexToBytes, utf8ToBytes } from "@noble/hashes/utils";
 
 export type PlayerClaim = {
   playerAlias: string;
@@ -31,6 +31,24 @@ export type MatchPassProof = {
   localProofDigest: string;
 };
 
+export const ZK_ARTIFACT_HASHES = {
+  proofHash: "8f50d86741be997da0777e99ccb94b7a4a1d75c548bc23bfc563b371f869c976",
+  vkHash: "e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1",
+  publicInputsHash: "7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a"
+} as const;
+
+export type ReceiptGateArgs = {
+  teamId: number;
+  tournamentId: number;
+  commitment: string;
+  nullifier: string;
+  payoutHash: string;
+  proofHash: string;
+  vkHash: string;
+  publicInputsHash: string;
+  receiptHash: string;
+};
+
 const FIELD_MODULUS = BigInt("21888242871839275222246405745257275088548364400416034343698204186575808495617");
 
 export function field(value: bigint): bigint {
@@ -52,6 +70,62 @@ export function digest(parts: Array<string | number | bigint>): string {
 
 export function hashAddress(address: string): string {
   return digest(["payout", address]).slice(0, 40);
+}
+
+function u32Bytes(value: number): Uint8Array {
+  const bytes = new Uint8Array(4);
+  new DataView(bytes.buffer).setUint32(0, value, false);
+  return bytes;
+}
+
+function u128Bytes(value: string | bigint): Uint8Array {
+  let n = typeof value === "bigint" ? value : BigInt(value);
+  const bytes = new Uint8Array(16);
+  for (let i = 15; i >= 0; i -= 1) {
+    bytes[i] = Number(n & 0xffn);
+    n >>= 8n;
+  }
+  return bytes;
+}
+
+function concatBytes(parts: Uint8Array[]): Uint8Array {
+  const total = parts.reduce((sum, part) => sum + part.length, 0);
+  const out = new Uint8Array(total);
+  let offset = 0;
+  for (const part of parts) {
+    out.set(part, offset);
+    offset += part.length;
+  }
+  return out;
+}
+
+export function receiptGatePreimage(receipt: PublicReceipt): Uint8Array {
+  return concatBytes([
+    utf8ToBytes("ProofCup MatchPass|v1|"),
+    u32Bytes(receipt.teamId),
+    u32Bytes(receipt.tournamentId),
+    u128Bytes(receipt.commitment),
+    u128Bytes(receipt.nullifier),
+    hexToBytes(receipt.payoutAddressHash)
+  ]);
+}
+
+export function receiptGateHash(receipt: PublicReceipt): string {
+  return bytesToHex(sha256(receiptGatePreimage(receipt)));
+}
+
+export function buildReceiptGateArgs(proof: MatchPassProof): ReceiptGateArgs {
+  return {
+    teamId: proof.receipt.teamId,
+    tournamentId: proof.receipt.tournamentId,
+    commitment: proof.receipt.commitment,
+    nullifier: proof.receipt.nullifier,
+    payoutHash: proof.receipt.payoutAddressHash,
+    proofHash: ZK_ARTIFACT_HASHES.proofHash,
+    vkHash: ZK_ARTIFACT_HASHES.vkHash,
+    publicInputsHash: ZK_ARTIFACT_HASHES.publicInputsHash,
+    receiptHash: receiptGateHash(proof.receipt)
+  };
 }
 
 export function createMatchPassProof(claim: PlayerClaim, now = new Date("2026-07-02T14:30:00.000Z")): MatchPassProof {

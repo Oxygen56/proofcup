@@ -31,7 +31,15 @@ Then open:
 
 `https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6`
 
-"The receipt hash is anchored on Stellar testnet, and the deployed Soroban contract stores the public nullifier. The first `verify_matchpass` invocation returned true; a duplicate nullifier simulation returns false before any payout is released."
+"The receipt hash is anchored on Stellar testnet, and the deployed Soroban contract stores the public nullifier. The upgraded receipt gate adds proof hash, verification-key hash, public-input hash, payout hash, and receipt hash checks before writing the nullifier. The first deployed `verify_matchpass` invocation returned true; a duplicate nullifier simulation returns false before any payout is released."
+
+Show the upgraded local proof gate:
+
+```bash
+pnpm soroban:test
+pnpm soroban:build
+stellar contract info interface --wasm target/stellar/matchpass_verifier.wasm
+```
 
 ## 1:20-1:50 CROO Agent
 

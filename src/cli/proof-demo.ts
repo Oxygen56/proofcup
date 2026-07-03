@@ -6,7 +6,7 @@ import { demoClaim } from "../data/demo";
 
 const proof = createMatchPassProof(demoClaim);
 const receipt = publicReceiptForSubmission(proof);
-const stellar = buildStellarAnchor(receipt);
+const stellar = buildStellarAnchor(proof);
 const audit = runCrooAudit(createCrooAuditRequest(proof));
 const payout = createWdkPayoutIntent(receipt, 1000);
 

@@ -32,5 +32,51 @@
     "firstInvokeReturned": true,
     "seenNullifierAfterInvoke": true,
     "duplicateInvokeSimulationReturned": false
+  },
+  "localReceiptGateUpgrade": {
+    "status": "build-and-tests-verified; redeploy blocked by public RPC provider errors on 2026-07-04",
+    "wasmHash": "6287720697927697eddbe9e3d310c1dccfb291f48d052c231c0c5d63f15bf097",
+    "wasmSizeBytes": 4114,
+    "receiptHash": "9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa",
+    "proofHash": "8f50d86741be997da0777e99ccb94b7a4a1d75c548bc23bfc563b371f869c976",
+    "vkHash": "e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1",
+    "publicInputsHash": "7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a",
+    "exportedFunctions": [
+      "expected_proof_hash",
+      "expected_public_inputs_hash",
+      "expected_vk_hash",
+      "receipt_hash",
+      "receipt_verified",
+      "seen_nullifier",
+      "verify_matchpass",
+      "verify_matchpass_receipt"
+    ],
+    "deployAttempts": [
+      {
+        "run": "experiments/runs/20260704-010037_soroban_receipt_gate_deploy_testnet",
+        "rpc": "https://soroban-rpc.testnet.stellar.gateway.fm",
+        "result": "Request rejected 503"
+      },
+      {
+        "run": "experiments/runs/20260704-010054_soroban_receipt_gate_deploy_config_testnet",
+        "rpc": "configured testnet",
+        "result": "client error Connect"
+      },
+      {
+        "run": "experiments/runs/20260704-010106_soroban_receipt_gate_deploy_sdf_testnet",
+        "rpc": "https://soroban-testnet.stellar.org",
+        "result": "client error Connect"
+      },
+      {
+        "run": "experiments/runs/20260704-010139_soroban_receipt_gate_deploy_nodies_testnet",
+        "rpc": "https://stellar-soroban-testnet-public.nodies.app",
+        "result": "Request rejected 403"
+      },
+      {
+        "run": "experiments/runs/20260704-010203_soroban_receipt_gate_deploy_sdf_no_proxy",
+        "rpc": "https://soroban-testnet.stellar.org",
+        "result": "client error Connect"
+      }
+    ]
   }
 }
