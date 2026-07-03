@@ -1,0 +1,182 @@
+{
+  "generatedAt": "2026-07-03T18:12:24.046Z",
+  "project": "ProofCup MatchPass",
+  "dorahacks": "https://dorahacks.io/buidl/46483",
+  "competitorReference": {
+    "name": "ZKADE",
+    "url": "https://dorahacks.io/buidl/46166",
+    "observedStrength": "RISC Zero Groth16 proof, Soroban verifier, testnet deployment, detailed limitations."
+  },
+  "publicReceipt": {
+    "protocol": "ProofCup MatchPass",
+    "teamId": 7,
+    "tournamentId": 20260703,
+    "commitment": "12514838",
+    "nullifier": "628113118",
+    "payoutAddressHash": "374ba7db577f24c38bbde469f894605b00ad5b1e",
+    "issuedAt": "2026-07-02T14:30:00.000Z"
+  },
+  "receiptGate": {
+    "teamId": 7,
+    "tournamentId": 20260703,
+    "commitment": "12514838",
+    "nullifier": "628113118",
+    "payoutHash": "374ba7db577f24c38bbde469f894605b00ad5b1e",
+    "proofHash": "b08b08291214979cf02f985bfaf26e8cc1e8c119dbaad485409be58e49439931",
+    "vkHash": "e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1",
+    "publicInputsHash": "7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a",
+    "receiptHash": "9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa"
+  },
+  "artifacts": {
+    "proof": {
+      "path": "zk-artifacts/matchpass/proof.json",
+      "bytes": 9948,
+      "sha256": "b08b08291214979cf02f985bfaf26e8cc1e8c119dbaad485409be58e49439931"
+    },
+    "vk": {
+      "path": "zk-artifacts/matchpass/vk.json",
+      "bytes": 4215,
+      "sha256": "e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1"
+    },
+    "publicInputs": {
+      "path": "zk-artifacts/matchpass/public_inputs.json",
+      "bytes": 355,
+      "sha256": "7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a"
+    },
+    "receiptGateWasm": {
+      "path": "target/stellar/matchpass_verifier.wasm",
+      "bytes": 4114,
+      "sha256": "b9df30cfad86d0793357742c2baa22d436494488d36b35c81d8bfd16ad97f9e4"
+    }
+  },
+  "hashChecks": {
+    "proofMatches": true,
+    "vkMatches": true,
+    "publicInputsMatches": true,
+    "wasmMatches": true,
+    "receiptHashMatches": true
+  },
+  "stellarEvidence": {
+    "network": "stellar-testnet",
+    "account": "GCARXKETTRKEVPBVBK2SXAMMD4B2EC2AFREMMX7ZIQH4KUUAOOFAOXRS",
+    "transactionHash": "2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681",
+    "ledger": 3398245,
+    "receiptHash": "f00988fe981d9a1f3c1fb6834e70cee75493b9e543c54b7a98d078ceb9f30a22",
+    "explorer": "https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681"
+  },
+  "sorobanEvidence": {
+    "contractId": "CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK",
+    "contractLab": "https://lab.stellar.org/r/testnet/contract/CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK",
+    "wasmHash": "00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603",
+    "receiptGateWasmHash": "b9df30cfad86d0793357742c2baa22d436494488d36b35c81d8bfd16ad97f9e4",
+    "receiptGateExports": 8,
+    "receiptGateStatus": "local-build-verified",
+    "uploadTx": "4ea12b85852773534e3545369721817f170b9f5bbee92a788e582ba340a11776",
+    "deployTx": "76bb73b269c1364ec913cca999eaedecaeb8937ab2b0bb432c24bc22bd803758",
+    "verifyTx": "cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6",
+    "verifyExplorer": "https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6",
+    "duplicateSimulation": "false"
+  },
+  "zkEvidence": {
+    "noirVersion": "1.0.0-beta.22",
+    "barretenbergVersion": "5.0.0-nightly.20260522",
+    "scheme": "ultra_honk",
+    "proofBytes": 9948,
+    "vkBytes": 4215,
+    "proofSha256": "b08b08291214979cf02f985bfaf26e8cc1e8c119dbaad485409be58e49439931",
+    "vkSha256": "e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1",
+    "publicInputsSha256": "7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a",
+    "receiptGateHash": "9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa"
+  },
+  "contractInterface": {
+    "ok": true,
+    "exports": [
+      "receipt_hash",
+      "seen_nullifier",
+      "expected_vk_hash",
+      "receipt_verified",
+      "verify_matchpass",
+      "expected_proof_hash",
+      "verify_matchpass_receipt",
+      "expected_public_inputs_hash"
+    ]
+  },
+  "ultraHonkBridge": {
+    "officialStellarDocs": [
+      "https://developers.stellar.org/docs/build/apps/privacy",
+      "https://developers.stellar.org/docs/build/apps/zk"
+    ],
+    "referenceVerifier": "https://github.com/NethermindEth/rs-soroban-ultrahonk",
+    "currentProofBackend": "Noir 1.0.0-beta.22 + Barretenberg 5.0.0-nightly.20260522 UltraHonk",
+    "compatibilityBoundary": "The current public reference verifier targets earlier Noir/bb artifacts, so ProofCup reports bridge readiness instead of pretending a full on-chain UltraHonk verifier is deployed."
+  },
+  "scorecard": [
+    {
+      "category": "Problem clarity",
+      "weight": 10,
+      "proofcup": 9,
+      "zkade": 9,
+      "note": "Both explain the user pain clearly; ProofCup targets eligibility and payouts, ZKADE targets front-running in games."
+    },
+    {
+      "category": "Real-world impact",
+      "weight": 12,
+      "proofcup": 9,
+      "zkade": 8,
+      "note": "ProofCup is tied to identity minimization and tournament payouts; ZKADE is strong but game-first."
+    },
+    {
+      "category": "ZK artifact evidence",
+      "weight": 14,
+      "proofcup": 10,
+      "zkade": 9,
+      "note": "ProofCup publishes proof, verification key, public inputs, byte sizes, and SHA-256 commitments."
+    },
+    {
+      "category": "Stellar deployment evidence",
+      "weight": 14,
+      "proofcup": 8,
+      "zkade": 10,
+      "note": "ZKADE publicly lists a verifier deployment; ProofCup has a deployed nullifier verifier and a receipt-aware gate with public RPC redeploy blocked."
+    },
+    {
+      "category": "On-chain business binding",
+      "weight": 14,
+      "proofcup": 10,
+      "zkade": 8,
+      "note": "ProofCup binds proof hash, VK hash, public-input hash, receipt hash, payout hash, and replay state into one receipt decision."
+    },
+    {
+      "category": "Reproducibility",
+      "weight": 12,
+      "proofcup": 10,
+      "zkade": 8,
+      "note": "ProofCup has one-command evidence generation and an explicit full verification run covering TS, Noir, Barretenberg, Soroban, and frontend."
+    },
+    {
+      "category": "Honest limitations",
+      "weight": 8,
+      "proofcup": 10,
+      "zkade": 10,
+      "note": "Both document limits; ProofCup separates deployed evidence from locally verified upgraded gate evidence."
+    },
+    {
+      "category": "Judge polish",
+      "weight": 8,
+      "proofcup": 9,
+      "zkade": 9,
+      "note": "Both have video, GitHub, and live/demo material; ProofCup adds a generated judge evidence matrix."
+    },
+    {
+      "category": "Ecosystem fit",
+      "weight": 8,
+      "proofcup": 9,
+      "zkade": 9,
+      "note": "Both use Stellar primitives; ProofCup is directly aligned with UltraHonk-on-Stellar docs."
+    }
+  ],
+  "weightedScores": {
+    "proofcup": 9.3,
+    "zkadePublicPage": 8.8
+  }
+}

@@ -20,6 +20,7 @@ pnpm proof:prove
 pnpm proof:verify
 pnpm soroban:test
 pnpm soroban:build
+pnpm judge:evidence
 pnpm agent:smoke
 pnpm tether:demo
 pnpm dev
@@ -44,7 +45,9 @@ pnpm dev
   - verify tx: https://stellar.expert/explorer/testnet/tx/cd5cee33bdedfbb1c6283718d1e384a8f8244046025d35068feed708157c4fa6
   - wasm: `target/stellar/matchpass_verifier.wasm`
   - deployed wasm hash: `00ab41ca13a91887708f3e6f288c07f79aacc2922f6a85bd5eb838f932994603`
-  - upgraded receipt-gate wasm hash: `6287720697927697eddbe9e3d310c1dccfb291f48d052c231c0c5d63f15bf097`
+  - upgraded receipt-gate wasm hash: `b9df30cfad86d0793357742c2baa22d436494488d36b35c81d8bfd16ad97f9e4`
+  - judge evidence matrix: `docs/JUDGE_EVIDENCE_MATRIX.md`
+  - UltraHonk bridge notes: `docs/ULTRAHONK_BRIDGE.md`
   - receipt gate hash: `9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa`
   - receipt gate functions: `verify_matchpass_receipt`, `receipt_hash`, `receipt_verified`, expected artifact hash getters, and duplicate-nullifier checks.
 - CROO-style HTTP agent:

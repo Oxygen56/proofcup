@@ -12,11 +12,11 @@ The original Stellar testnet deployment proves that ProofCup can anchor a MatchP
 
 ## Bound Artifacts
 
-- `proof.json`: `8f50d86741be997da0777e99ccb94b7a4a1d75c548bc23bfc563b371f869c976`
+- `proof.json`: `b08b08291214979cf02f985bfaf26e8cc1e8c119dbaad485409be58e49439931`
 - `vk.json`: `e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1`
 - `public_inputs.json`: `7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a`
 - Receipt gate hash: `9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa`
-- Upgraded WASM hash: `6287720697927697eddbe9e3d310c1dccfb291f48d052c231c0c5d63f15bf097`
+- Upgraded WASM hash: `b9df30cfad86d0793357742c2baa22d436494488d36b35c81d8bfd16ad97f9e4`
 
 ## Verification Evidence
 
@@ -42,4 +42,4 @@ The first deployed testnet contract remains public at:
 
 `CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK`
 
-The upgraded receipt-gate build is ready for redeploy. Attempts on 2026-07-04 reached multiple public RPC endpoints but were rejected by provider-side errors (`503`, `Connect`, and `403`), so the repository reports this as a verified local upgrade rather than claiming a second public deployment.
+The upgraded receipt-gate build now binds the pinned submission `proof.json` SHA-256 and is ready for redeploy. If `pnpm proof:prove` is rerun, it may rewrite the proof artifact; rebuild the receipt gate after rebinding the proof hash before treating the WASM as the final submission gate. Attempts on 2026-07-04 reached multiple public RPC endpoints but were rejected by provider-side errors (`503`, `Connect`, and `403`), so the repository reports this as a verified local upgrade rather than claiming a second public deployment.

@@ -37,7 +37,7 @@ describe("ProofCup", () => {
     const gate = buildReceiptGateArgs(proof);
 
     expect(receiptGateHash(proof.receipt)).toBe("9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa");
-    expect(gate.proofHash).toBe("8f50d86741be997da0777e99ccb94b7a4a1d75c548bc23bfc563b371f869c976");
+    expect(gate.proofHash).toBe("b08b08291214979cf02f985bfaf26e8cc1e8c119dbaad485409be58e49439931");
     expect(gate.vkHash).toBe("e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1");
     expect(gate.publicInputsHash).toBe("7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a");
   });

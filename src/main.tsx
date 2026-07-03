@@ -6,7 +6,7 @@ import { buildStellarAnchor } from "./lib/stellar";
 import { createCrooAuditRequest, runCrooAudit } from "./lib/croo";
 import { createWdkPayoutIntent, explainTetherFit } from "./lib/tether";
 import { demoClaim, payoutManifest } from "./data/demo";
-import { sorobanEvidence, stellarEvidence, zkEvidence } from "./data/evidence";
+import { judgeEvidence, sorobanEvidence, stellarEvidence, ultraHonkBridge, zkEvidence } from "./data/evidence";
 import "./styles.css";
 
 const proof = createMatchPassProof(demoClaim);
@@ -98,6 +98,11 @@ function App() {
           <strong>bound</strong>
           <em>{receiptGate.receiptHash.slice(0, 18)}...</em>
         </div>
+        <div>
+          <span>ZKADE benchmark</span>
+          <strong>{judgeEvidence.proofcupJudgeConfidence}</strong>
+          <em>public-page score</em>
+        </div>
       </section>
 
       <section className="grid" id="tracks">
@@ -119,6 +124,42 @@ function App() {
           <p>Football knockout rewards become self-custodial USDt payout intents that can be wired into WDK modules.</p>
           <code>{payout.asset} / {payout.walletMode} / {payout.policyId}</code>
         </article>
+      </section>
+
+      <section className="band benchmark">
+        <div className="section-title">
+          <Trophy />
+          <div>
+            <h2>ZKADE-Grade Judge Evidence</h2>
+            <p>ProofCup now ships a generated evidence matrix instead of asking judges to trust prose.</p>
+          </div>
+        </div>
+        <div className="table">
+          <a className="row" href={judgeEvidence.benchmarkUrl} target="_blank" rel="noreferrer">
+            <span>Benchmark</span>
+            <strong>{judgeEvidence.benchmarkProject}</strong>
+            <span>{judgeEvidence.zkadePublicPageConfidence}</span>
+            <em>public page</em>
+          </a>
+          <div className="row">
+            <span>ProofCup score</span>
+            <strong>{judgeEvidence.strongestClaim}</strong>
+            <span>{judgeEvidence.proofcupJudgeConfidence}</span>
+            <em>generated locally</em>
+          </div>
+          <a className="row" href={ultraHonkBridge.referenceUrl} target="_blank" rel="noreferrer">
+            <span>UltraHonk bridge</span>
+            <strong>{ultraHonkBridge.reference}</strong>
+            <span>{ultraHonkBridge.status}</span>
+            <em>Noir-native path</em>
+          </a>
+          <div className="row">
+            <span>Boundary</span>
+            <strong>{judgeEvidence.honestBoundary}</strong>
+            <span>disclosed</span>
+            <em>no overclaim</em>
+          </div>
+        </div>
       </section>
 
       <section className="band">

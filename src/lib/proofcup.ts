@@ -32,7 +32,7 @@ export type MatchPassProof = {
 };
 
 export const ZK_ARTIFACT_HASHES = {
-  proofHash: "8f50d86741be997da0777e99ccb94b7a4a1d75c548bc23bfc563b371f869c976",
+  proofHash: "b08b08291214979cf02f985bfaf26e8cc1e8c119dbaad485409be58e49439931",
   vkHash: "e315430eb8c70ea1748d083c36992f6210c9d243bb251047f727325cd07da2b1",
   publicInputsHash: "7bf398bafb7e6d4274a46458ac1d3d2642a6c5f67d0f0c219328e1a4bf7bc63a"
 } as const;
