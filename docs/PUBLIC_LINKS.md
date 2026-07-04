@@ -2,7 +2,7 @@
 
 - GitHub repository: `https://github.com/Oxygen56/proofcup`
 - Live demo: `https://oxygen56.github.io/proofcup/`
-- GitHub release package: `https://github.com/Oxygen56/proofcup/releases/tag/v0.1.6`
+- GitHub release package: `https://github.com/Oxygen56/proofcup/releases/tag/v0.1.7`
 - Demo video: `https://github.com/Oxygen56/proofcup/releases/download/v0.1.5/proofcup-demo.mov`
 - Stellar testnet anchor: `https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681`
 - Deployed UltraHonk verifier: `https://lab.stellar.org/r/testnet/contract/CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI`
