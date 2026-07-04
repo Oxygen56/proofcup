@@ -2,16 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ShieldCheck, WalletCards, Bot, Trophy, FileCheck2, Network } from "lucide-react";
 import { buildReceiptGateArgs, createMatchPassProof, publicReceiptForSubmission, verifyMatchPassProof } from "./lib/proofcup";
-import { buildStellarAnchor } from "./lib/stellar";
 import { createCrooAuditRequest, runCrooAudit } from "./lib/croo";
 import { createWdkPayoutIntent, explainTetherFit } from "./lib/tether";
 import { demoClaim, payoutManifest } from "./data/demo";
-import { judgeEvidence, sorobanEvidence, stellarEvidence, ultraHonkBridge, zkEvidence } from "./data/evidence";
+import { judgeEvidence, sorobanEvidence, sorobanUltraHonkEvidence, stellarEvidence, ultraHonkBridge, zkEvidence } from "./data/evidence";
 import "./styles.css";
 
 const proof = createMatchPassProof(demoClaim);
 const receipt = publicReceiptForSubmission(proof);
-const stellar = buildStellarAnchor(proof);
 const receiptGate = buildReceiptGateArgs(proof);
 const audit = runCrooAudit(createCrooAuditRequest(proof));
 const payout = createWdkPayoutIntent(receipt, 1000);
@@ -90,8 +88,8 @@ function App() {
         </div>
         <div>
           <span>Soroban verifier</span>
-          <strong>receipt gate</strong>
-          <em>{sorobanEvidence.receiptGateWasmHash.slice(0, 18)}...</em>
+          <strong>UltraHonk verified</strong>
+          <em>{sorobanUltraHonkEvidence.verifierWasmHash.slice(0, 18)}...</em>
         </div>
         <div>
           <span>Receipt hash</span>
@@ -109,8 +107,8 @@ function App() {
         <article>
           <Network />
           <h3>Stellar ZK</h3>
-          <p>Posts the public proof receipt to a Soroban proof gate that binds artifact hashes, public inputs, receipt hash, and nullifier replay protection.</p>
-          <code>{stellar.contractMethod} / {sorobanEvidence.contractId}</code>
+          <p>Verifies MatchPass artifacts through a deployed Soroban UltraHonk verifier, then binds receipt and nullifier state through a receipt gate.</p>
+          <code>verify_proof / {sorobanUltraHonkEvidence.contractId}</code>
         </article>
         <article>
           <Bot />
@@ -148,10 +146,10 @@ function App() {
             <em>generated locally</em>
           </div>
           <a className="row" href={ultraHonkBridge.referenceUrl} target="_blank" rel="noreferrer">
-            <span>UltraHonk bridge</span>
+            <span>UltraHonk verifier</span>
             <strong>{ultraHonkBridge.reference}</strong>
             <span>{ultraHonkBridge.status}</span>
-            <em>Noir-native path</em>
+            <em>testnet verified</em>
           </a>
           <div className="row">
             <span>Boundary</span>
@@ -167,12 +165,24 @@ function App() {
           <Network />
           <div>
             <h2>Stellar Contract Evidence</h2>
-            <p>Testnet verifier deployment plus the upgraded receipt-aware proof gate built locally.</p>
+            <p>Full UltraHonk verifier deployment plus the receipt-aware proof gate.</p>
           </div>
         </div>
         <div className="table">
+          <a className="row" href={sorobanUltraHonkEvidence.contractLab} target="_blank" rel="noreferrer">
+            <span>UltraHonk verifier</span>
+            <strong>{sorobanUltraHonkEvidence.contractId}</strong>
+            <span>testnet</span>
+            <em>deployed</em>
+          </a>
+          <a className="row" href={sorobanUltraHonkEvidence.verifyExplorer} target="_blank" rel="noreferrer">
+            <span>verify_proof tx</span>
+            <strong>{sorobanUltraHonkEvidence.verifyTx}</strong>
+            <span>true</span>
+            <em>{sorobanUltraHonkEvidence.result}</em>
+          </a>
           <a className="row" href={sorobanEvidence.contractLab} target="_blank" rel="noreferrer">
-            <span>Contract</span>
+            <span>Receipt gate</span>
             <strong>{sorobanEvidence.contractId}</strong>
             <span>testnet</span>
             <em>deployed</em>

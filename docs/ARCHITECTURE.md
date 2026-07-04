@@ -4,7 +4,7 @@
 
 ProofCup lets tournament organizers verify player eligibility and prepare stablecoin payouts without publishing player identity. It is packaged for three hackathons:
 
-- Stellar ZK: the MatchPass Noir circuit proves knowledge of private roster data and emits a public nullifier.
+- Stellar ZK: the MatchPass Noir circuit proves knowledge of private roster data, emits a public nullifier, and is verified through a deployed Soroban UltraHonk verifier artifact set.
 - CROO: a paid callable CAP agent audits receipts and prepares downstream payout handoffs.
 - Tether Developers Cup: a football-themed WDK payout wallet turns bracket milestones into USDt payout intents.
 
@@ -20,14 +20,13 @@ ProofCup lets tournament organizers verify player eligibility and prepare stable
 
 - Working TypeScript proof workflow.
 - Compilable Noir circuit source.
-- Deployed Soroban verifier contract on Stellar testnet.
+- Deployed Soroban UltraHonk verifier contract on Stellar testnet.
 - Upgraded Soroban receipt gate with 8 exported functions, deterministic receipt hashing, artifact hash checks, and replay protection.
 - CROO CAP manifest and OpenAPI shape.
 - Tether WDK payout intent model.
 
 ## Production Next Steps
 
-- Redeploy the receipt-aware gate once the public testnet RPC accepts contract uploads again.
-- Expand the receipt gate into a full in-contract UltraHonk verifier or a circuit-specific BN254 verifier as Stellar host-function economics permit.
+- Merge the receipt-aware gate and the full UltraHonk verifier into one production contract once verifier cost and host-function limits are tuned.
 - Register the CROO agent on Agent Store.
 - Select WDK target chain and bind payout signing.

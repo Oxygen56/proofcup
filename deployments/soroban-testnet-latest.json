@@ -33,8 +33,17 @@
     "seenNullifierAfterInvoke": true,
     "duplicateInvokeSimulationReturned": false
   },
+  "fullUltraHonkVerifier": {
+    "status": "testnet-deployed-and-verified",
+    "deploymentFile": "deployments/soroban-ultrahonk-testnet-latest.json",
+    "contractId": "CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI",
+    "contractLab": "https://lab.stellar.org/r/testnet/contract/CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI",
+    "verifierWasmHash": "dce12a9aa49132bc30edecddcd58904d358b39e5036d779937d232fde35990d2",
+    "verifyProofTx": "0f28b9bb67db7fed0b436a441abb9bb8702c1a573803c16cd22fe162ad73d564",
+    "verifyProofExplorer": "https://stellar.expert/explorer/testnet/tx/0f28b9bb67db7fed0b436a441abb9bb8702c1a573803c16cd22fe162ad73d564"
+  },
   "localReceiptGateUpgrade": {
-    "status": "build-and-tests-verified; redeploy blocked by public RPC provider errors on 2026-07-04",
+    "status": "build-and-tests-verified; full UltraHonk verifier deployed separately in deployments/soroban-ultrahonk-testnet-latest.json",
     "wasmHash": "b9df30cfad86d0793357742c2baa22d436494488d36b35c81d8bfd16ad97f9e4",
     "wasmSizeBytes": 4114,
     "receiptHash": "9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa",
@@ -51,7 +60,7 @@
       "verify_matchpass",
       "verify_matchpass_receipt"
     ],
-    "deployAttempts": [
+    "historicalDeployAttempts": [
       {
         "run": "experiments/runs/20260704-010037_soroban_receipt_gate_deploy_testnet",
         "rpc": "https://soroban-rpc.testnet.stellar.gateway.fm",

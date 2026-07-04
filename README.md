@@ -2,7 +2,7 @@
 
 ProofCup is a privacy-preserving tournament payout and roster verification stack for three open hackathons:
 
-- Stellar Hacks: Real-World ZK: private roster eligibility proofs, public nullifiers, and a Soroban receipt-aware proof gate.
+- Stellar Hacks: Real-World ZK: private roster eligibility proofs, public nullifiers, a deployed Soroban UltraHonk verifier, and a receipt-aware proof gate.
 - CROO Agent Hackathon: a paid callable audit agent that checks proof receipts, payout manifests, and tournament risk.
 - Tether Developers Cup: a football-themed WDK wallet and payment flow for self-custodial USDt prize operations.
 
@@ -37,7 +37,17 @@ pnpm dev
 - Stellar testnet receipt anchor:
   - transaction: `2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681`
   - explorer: https://stellar.expert/explorer/testnet/tx/2fd0119b5ae81f695d81f38a29efa440e9f05009b08463071f8c942608159681
-- Stellar Soroban verifier:
+- Stellar Soroban UltraHonk verifier:
+  - contract: `CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI`
+  - lab: https://lab.stellar.org/r/testnet/contract/CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI
+  - upload tx: https://stellar.expert/explorer/testnet/tx/ea56b96f439512aca1e4298e81bbcb70862fca7f5ef1ae8b3a6515c6edb38b5e
+  - deploy tx: https://stellar.expert/explorer/testnet/tx/daa116ebb0e1e9c358ac078929a7776f401ec2978ce76a5d1ca57a57e868ec76
+  - verify tx: https://stellar.expert/explorer/testnet/tx/0f28b9bb67db7fed0b436a441abb9bb8702c1a573803c16cd22fe162ad73d564
+  - verifier wasm: `target/stellar/rs_soroban_ultrahonk_matchpass_verifier.wasm`
+  - verifier wasm hash: `dce12a9aa49132bc30edecddcd58904d358b39e5036d779937d232fde35990d2`
+  - deployed proof artifacts: `zk-artifacts/matchpass-soroban-ultrahonk/`
+  - deployment record: `deployments/soroban-ultrahonk-testnet-latest.json`
+- Stellar Soroban receipt/nullifier gate:
   - contract: `CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK`
   - lab: https://lab.stellar.org/r/testnet/contract/CBNGZ5V25IPGHVBTNSM7GQSZVHDMAZCFZDTL6S2DZTDEZSYHCTKKU3MK
   - upload tx: https://stellar.expert/explorer/testnet/tx/4ea12b85852773534e3545369721817f170b9f5bbee92a788e582ba340a11776
@@ -50,6 +60,9 @@ pnpm dev
   - UltraHonk bridge notes: `docs/ULTRAHONK_BRIDGE.md`
   - receipt gate hash: `9f9255f69868fb538dd6c12a663439b807c76990e1166fbd8dc136b5c92acbaa`
   - receipt gate functions: `verify_matchpass_receipt`, `receipt_hash`, `receipt_verified`, expected artifact hash getters, and duplicate-nullifier checks.
+- Artifact boundary:
+  - the main Barretenberg 5 proof set remains pinned in `zk-artifacts/matchpass/`;
+  - the deployed Soroban verifier proof set is pinned in `zk-artifacts/matchpass-soroban-ultrahonk/` and was generated from the same MatchPass circuit logic and public values on the reference-compatible toolchain.
 - CROO-style HTTP agent:
   - `pnpm agent:serve`
   - `GET /health`, `GET /sample`, `POST /audit`, `POST /payout-intent`

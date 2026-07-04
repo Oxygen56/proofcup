@@ -1,0 +1,83 @@
+{
+  "network": "stellar-testnet",
+  "rpc": "https://rpc.ankr.com/stellar_testnet_soroban",
+  "networkPassphrase": "Test SDF Network ; September 2015",
+  "deployer": "GCVG3KU6XQTK37U7FSNFK4Q3M63F7WYQZ4YQUUC2UQKWRUGBCWEMKDK7",
+  "contractId": "CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI",
+  "contractLab": "https://lab.stellar.org/r/testnet/contract/CDSL73NGUOCJS5J4IDKYROO5WSTJ7Z4Z3XJ647FB6VWDH62YJHBSVZFI",
+  "referenceVerifier": {
+    "repo": "https://github.com/yugocabrio/rs-soroban-ultrahonk",
+    "commit": "661db07200f890b1bd9a7349ed787c70a706dd12",
+    "contractPackage": "rs-soroban-ultrahonk",
+    "interface": [
+      "vk_bytes",
+      "verify_proof"
+    ]
+  },
+  "toolchain": {
+    "nargo": "1.0.0-beta.9",
+    "barretenberg": "0.87.0"
+  },
+  "circuit": {
+    "name": "matchpass",
+    "source": "circuits/matchpass/src/main.nr",
+    "privateInputs": [
+      "secret",
+      "roster_salt"
+    ],
+    "publicInputs": [
+      "team_id",
+      "tournament_id",
+      "commitment",
+      "nullifier"
+    ],
+    "publicValues": {
+      "team_id": 7,
+      "tournament_id": 20260703,
+      "commitment": "12514838",
+      "nullifier": "628113118"
+    }
+  },
+  "artifacts": {
+    "proof": {
+      "path": "zk-artifacts/matchpass-soroban-ultrahonk/proof",
+      "sizeBytes": 14592,
+      "sha256": "43d08d9750c6fbbb6ad853b5044e569231210c916244aff007a494138e765764"
+    },
+    "publicInputs": {
+      "path": "zk-artifacts/matchpass-soroban-ultrahonk/public_inputs",
+      "sizeBytes": 128,
+      "sha256": "e07036fa8d7fece627ecde6f3e3bfd74a48dc0241bf9d47c4b82545ea7040aab"
+    },
+    "verificationKey": {
+      "path": "zk-artifacts/matchpass-soroban-ultrahonk/vk",
+      "sizeBytes": 1760,
+      "sha256": "a8aefdd4ae8b87767b74fa8f5335dc94b6d5c6eb67f220ed2cb43062fa293fa9"
+    },
+    "verifierWasm": {
+      "path": "target/stellar/rs_soroban_ultrahonk_matchpass_verifier.wasm",
+      "sizeBytes": 42948,
+      "sha256": "dce12a9aa49132bc30edecddcd58904d358b39e5036d779937d232fde35990d2"
+    }
+  },
+  "transactions": {
+    "friendbot": "2e31169dbe1f522ccfd2fc95f3af0a0f5dbcce8630aea89a1141b115129c94bc",
+    "uploadWasm": "ea56b96f439512aca1e4298e81bbcb70862fca7f5ef1ae8b3a6515c6edb38b5e",
+    "deployContract": "daa116ebb0e1e9c358ac078929a7776f401ec2978ce76a5d1ca57a57e868ec76",
+    "verifyProof": "0f28b9bb67db7fed0b436a441abb9bb8702c1a573803c16cd22fe162ad73d564"
+  },
+  "explorer": {
+    "uploadWasm": "https://stellar.expert/explorer/testnet/tx/ea56b96f439512aca1e4298e81bbcb70862fca7f5ef1ae8b3a6515c6edb38b5e",
+    "deployContract": "https://stellar.expert/explorer/testnet/tx/daa116ebb0e1e9c358ac078929a7776f401ec2978ce76a5d1ca57a57e868ec76",
+    "verifyProof": "https://stellar.expert/explorer/testnet/tx/0f28b9bb67db7fed0b436a441abb9bb8702c1a573803c16cd22fe162ad73d564"
+  },
+  "verification": {
+    "localRun": "experiments/runs/20260704-141850_proofcup-ultrahonk-matchpass-local-verify",
+    "buildRun": "experiments/runs/20260704-142048_proofcup-ultrahonk-verifier-wasm-build",
+    "deployRun": "experiments/runs/20260704-142850_proofcup-ultrahonk-matchpass-testnet-deploy-alt-rpc",
+    "verifyRun": "experiments/runs/20260704-142945_proofcup-ultrahonk-matchpass-testnet-verify",
+    "invokeResult": "null",
+    "status": "testnet-deployed-and-verified"
+  },
+  "artifactBoundary": "The main Barretenberg 5 proof remains pinned in zk-artifacts/matchpass. This deployment uses verifier-compatible Noir 1.0.0-beta.9 and Barretenberg 0.87.0 artifacts generated from the same MatchPass circuit logic and public values."
+}
